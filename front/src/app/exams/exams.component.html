@@ -1,0 +1,59 @@
+<div class="container spacertab">
+  <app-menu></app-menu>
+</div>
+
+<div class="container spacertab">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Listes des Exams
+      <button routerLink="/exam-create" class="btn btn-success"> Créer EXAMEN </button>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label> Mot Clé :(Titre)</label>
+        <input type="text" [(ngModel)]="titre" />
+        <button class="btn btn-primary" (click)="doSearch()">Chercher</button>
+      </div>
+
+      <table class="table table-stripped">
+        <tr>
+          <th>ID</th>
+          <th>Titre</th>
+          <th>Durée</th>
+          <th>Nb de Qestions</th>
+          <th>Nb Chapitre</th>
+          <th>Date</th>
+        </tr>
+
+        <tr *ngFor="let e of pageExams?.content">
+          <td>{{e.id}}</td>
+          <td>{{e.titre}}</td>
+          <td>{{e.duree}}</td>
+          <td>{{e.nbQuestion}}</td>
+          <td>{{e.nbChapitre}}</td>
+          <td>{{e.date|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>
+            <a *ngIf='authService.isAdmin()' (click)="onEditExam(e.id)" class="clickable">Edit</a>
+          </td>
+
+          <td>
+            <a *ngIf='authService.isAdmin()' (click)="onDeleteExam(e)" class="clickable">Delete</a>
+          </td>
+
+
+        </tr>
+
+      </table>
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages ; let i=index">
+            <a class="clickable" (click)="GoToPage(i)">
+            {{i}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

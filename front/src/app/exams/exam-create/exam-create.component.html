@@ -1,0 +1,56 @@
+<div class="container spacertab">
+<app-menu></app-menu>
+</div>
+
+
+<div class="container spacertab">
+  <div class="row col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">New Exam</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label">Titre :</label>
+          <input type="text" class="form-control" [(ngModel)]="examen.titre" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Durée :</label>
+          <input type="text" class="form-control" [(ngModel)]="examen.duree" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nombre de Question :</label>
+          <input type="text" class="form-control" [(ngModel)]="examen.nbQuestion" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nombre de Chapitre :</label>
+          <input type="text" class="form-control" [(ngModel)]="examen.nbChapitre" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Date D'examen  :</label>
+          <input type="date" class="form-control" [(ngModel)]="examen.date" />
+        </div>
+
+        <!--<div class="form-group">
+          <label class="control-label">Categorie :</label>
+          <select class="form-control" id="category" [(ngModel)]="exam.category" name="category">
+         <option *ngFor="let cat of catrgories" [(value)]="cat.id">{{cat.libelle}}</option>
+       </select>
+        </div>-->
+
+        <div class="form-group">
+          <label class="control-label">Categorie  :</label>
+          <div>
+            <select class="form-control" [(ngModel)]="selectedCategorie" (ngModelChange)="onChangeCategorie($event)">
+                <option *ngFor="let cat of catrgories" [ngValue]="cat" >{{cat.libelle}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+            <button routerLink="/exams" class="btn btn-danger"> Cancel </button>
+
+          <button class="btn btn-primary" (click)="saveExam()">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

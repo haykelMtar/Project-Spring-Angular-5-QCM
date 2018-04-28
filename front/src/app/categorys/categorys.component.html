@@ -1,0 +1,58 @@
+<div class="container spacertab">
+  <app-menu></app-menu>
+
+</div>
+
+
+
+<div class="container spacertab">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      categorys List
+      <button routerLink="/category-create" class="btn btn-success"> New Category </button>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label> Mot Clé :(Libelle)</label>
+        <input type="text" [(ngModel)]="libelle" />
+        <button class="btn btn-primary" (click)="doSearch()">Search</button>
+      </div>
+
+      <table class="table table-stripped">
+        <tr>
+          <th>ID</th>
+          <th>Libelle</th>
+          <th>Description</th>
+
+        </tr>
+
+        <tr *ngFor="let c of pageCategorys?.content">
+          <td>{{c.id}}</td>
+          <td>{{c.libelle}}</td>
+          <td>{{c.description}}</td>
+
+          <td>
+            <a *ngIf='authService.isAdmin()' (click)="onEditCategory(c.id)" class="clickable">Edit</a>
+          </td>
+
+          <td>
+            <a *ngIf='authService.isAdmin()' (click)="onDeleteCategory(c)" class="clickable">Delete</a>
+          </td>
+
+
+        </tr>
+
+      </table>
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages ; let i=index">
+            <a class="clickable" (click)="GoToPage(i)">
+            {{i}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

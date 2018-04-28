@@ -1,0 +1,34 @@
+<div class="container spacertab">
+ <app-menu></app-menu>
+
+</div>
+
+
+<div class="container spacertab">
+  <div class="row col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Update Category</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label">Libelle :</label>
+          <input type="text" class="form-control" [(ngModel)]="categorie.libelle"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Desscription :</label>
+          <input type="text" class="form-control" [(ngModel)]="categorie.description" />
+        </div>
+
+        <!--<div class="form-group">
+          <label class="control-label">Categorie Sup :</label>
+          <select class="form-control" id="category" [(ngModel)]="categorie.category" name="category">
+         <option *ngFor="let cat of catrgories" [(value)]="cat.id">{{cat.libelle}}</option>
+       </select>
+        </div>-->
+  <button routerLink="/categorys" class="btn btn-danger"> Cancel </button>
+
+        <button class="btn btn-primary" (click)="updateCategory()">Save</button>
+
+      </div>
+    </div>
+  </div>
+</div>

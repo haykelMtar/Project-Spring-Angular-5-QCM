@@ -1,0 +1,36 @@
+<div class="container spacertab">
+  <app-menu></app-menu>
+
+
+</div>
+
+
+<div class="container spacertab">
+  <div class="row col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">New Chapitre</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label">Libelle :</label>
+          <input type="text" class="form-control" [(ngModel)]="chapitre.libelle" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nombre de Question :</label>
+          <input type="text" class="form-control" [(ngModel)]="chapitre.nbQuestion" />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Categorie  :</label>
+          <div>
+            <select class="form-control" [(ngModel)]="selectedCategorie" (ngModelChange)="onChangeCategorie($event)">
+                <option *ngFor="let cat of catrgories" [ngValue]="cat" >{{cat.libelle}}</option>
+            </select>
+          </div>
+        </div>
+        <button routerLink="/chapitres" class="btn btn-danger"> Cancel </button>
+        <button class="btn btn-primary" (click)="saveChapitre()">Save</button>
+
+      </div>
+    </div>
+  </div>
+</div>

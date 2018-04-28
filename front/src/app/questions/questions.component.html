@@ -1,0 +1,55 @@
+<div class="container spacertab">
+ <app-menu></app-menu>
+
+</div>
+
+
+<div class="container spacertab">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Questions List
+       <button routerLink="/question-create" class="btn btn-success"> Créer Question </button>
+
+      </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label> Mot Clé :(Enoncé)</label>
+        <input type="text" [(ngModel)]="enonce" />
+        <button class="btn btn-primary" (click)="doSearch()">Search</button>
+      </div>
+
+      <table class="table table-stripped">
+        <tr>
+          <th>ID</th>
+          <th>Enoncé</th>
+          <th>Photo</th>
+
+        </tr>
+
+        <tr *ngFor="let q of pageQuestions?.content">
+          <td>{{q.id}}</td>
+          <td>{{q.enonce}}</td>
+          <td>{{q.photo}}</td>
+
+
+          <td>
+            <a *ngIf='authService.isAdmin()' (click)="onDeleteQuestion(q)" class="clickable">Delete</a>
+          </td>
+
+
+        </tr>
+
+      </table>
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages ; let i=index">
+            <a class="clickable" (click)="GoToPage(i)">
+            {{i}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

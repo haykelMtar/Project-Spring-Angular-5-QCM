@@ -1,0 +1,33 @@
+<div class="container spacertab">
+  <div class="panel panel-primary" *ngIf="mode==1">
+    <div class="panel-heading">S'inscrire</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label class="control-label">Username :</label>
+        <input type="text" class="form-control" [(ngModel)]="user.username" />
+      </div>
+      <div class="form-group">
+        <label class="control-label">Password :</label>
+        <input type="text" class="form-control" [(ngModel)]="user.password" />
+      </div>
+      <div class="form-group">
+        <label class="control-label">Nom :</label>
+        <input type="text" class="form-control" [(ngModel)]="user.nom" />
+      </div>
+      <div class="form-group">
+        <label class="control-label">Prenom :</label>
+        <input type="text" class="form-control" [(ngModel)]="user.prenom" />
+      </div>
+      <div class="form-group">
+        <label class="control-label">Date Naissance  :</label>
+        <input type="date" class="form-control" [(ngModel)]="user.dateNais" />
+      </div>
+      <div class="form-group">
+        <label class="control-label">Photo  :</label>
+        <input type="file" class="form-control" [(ngModel)]="user.photo" />
+      </div>
+      <button class="btn btn-primary" (click)="onRegister()">Save</button>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container spacertab">
+  <app-menu></app-menu>
+</div>
+
+
+<div class="container spacertab">
+  <div class="row col-md-6">
+    <div class="panel panel-primary" *ngIf="mode==1">
+      <div class="panel-heading">New Question</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label">Enoncé :</label>
+          <input type="textarea" class="form-control" [(ngModel)]="question.enonce" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Chapitre  :</label>
+          <div>
+            <select class="form-control" [(ngModel)]="selectedChapitre" (ngModelChange)="onChangeChapitre($event)">
+                <option *ngFor="let chap of chapitres" [ngValue]="chap" >{{chap.libelle}}</option>
+            </select>
+          </div>
+        </div>
+        <!--<div class="form-group">
+        <label class="control-label">Photo  :</label>
+        <input type="file" id='photoquestion' class="form-control" [(ngModel)]="question.photo"(change)="onFileChange($event)"/>
+      </div>-->
+
+
+        <button routerLink="/questions" class="btn btn-danger"> Cancel </button>
+
+        <button class="btn btn-danger pull-right" (click)="saveQestion()">Suivant >></button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row col-md-6">
+  <div class="panel panel-primary" *ngIf="mode==2">
+    <div class="panel-heading">Reponses</div>
+    <div class="panel-body">
+      <table class="answers">
+        <tbody>
+          <tr *ngFor="let reponse of question.reponses">
+            <td>
+              <div class="checkbox">
+                <label>
+                                <input type="checkbox" [(ngModel)]="reponse.validite" [ngModelOptions]="{standalone: true}">
+                              </label>
+              </div>
+            </td>
+            <td>
+              <input type="text" class="form-control" required [(ngModel)]="reponse.proposition" [ngModelOptions]="{standalone: true}">
+            </td>
+            <td class="td-actions text-right">
+              <button type="button" (click)="deleteAnswer(question, reponse)" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                              <i class="material-icons">close</i>
+                            </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <button type="button" (click)="addAnswer(question)" class="btn btn-primary btn-xs">Ajouter réponse</button>
+      </div>
+      <button routerLink="/questions" class="btn btn-danger"> Cancel </button>
+
+      <button class="btn btn-success pull-right" (click)="updateQestion()">Save</button>
+
+    </div>
+  </div>
+</div>

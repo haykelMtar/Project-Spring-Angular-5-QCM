@@ -25,6 +25,7 @@ public class GExamApplication {
 	}
 	
 	public static void main(String[] args) {
+	
 		ApplicationContext ctx = SpringApplication.run(GExamApplication.class, args);
 		
 		UserRestService us =ctx.getBean(UserRestService.class);
